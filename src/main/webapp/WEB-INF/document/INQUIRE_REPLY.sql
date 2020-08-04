@@ -1,6 +1,7 @@
 /**********************************/
 /* Table Name: 1대1문의 답변 */
 /**********************************/
+DROP TABLE INQUIRE_REPLY;
 CREATE TABLE INQUIRE_REPLY(
 		INQUIRE_REPLYNO               		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
 		INQUIRENO                     		NUMBER(10)		 NOT NULL,
@@ -21,3 +22,11 @@ COMMENT ON COLUMN INQUIRE_REPLY.REPLY_CONTENT is '답변 내용';
 COMMENT ON COLUMN INQUIRE_REPLY.REPLY_PASSWD is '패스워드';
 COMMENT ON COLUMN INQUIRE_REPLY.REPLY_RDATE is '등록일';
 COMMENT ON COLUMN INQUIRE_REPLY.MANAGERNO is '관리자 번호';
+
+DROP SEQUENCE INQUIRE_REPLY_seq;
+CREATE SEQUENCE INQUIRE_REPLY_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;

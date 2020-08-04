@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="vga.mvc.destination.DestinationDAOInter">
+  
+  <!-- 배송지 등록 --> 
+  <insert id="create" parameterType="DestinationVO">
+    INSERT INTO destination(destinationno, recipient, recipient_phone,
+    postcode, address1 ,address2, memno)
+    VALUES(destination_seq.nextval, #{recipient}, #{recipient_phone},
+    #{postcode}, #{address1}, #{address2}, #{memno})
+  </insert>
+  
+  <!-- 배송지 전체 목록 조회 --> 
+  <select id="list" resultType="DestinationVO" parameterType="int">
+    SELECT destinationno, recipient, recipient_phone, postcode, address1 ,address2, basic, memno
+    FROM destination
+    WHERE memno=#{memno}
+    ORDER BY destinationno ASC
+  </select>
+  
+  <!-- destinationno(PK)로 배송지 한 건만 조회 -->   
+  <select id="read" resultType="DestinationVO" parameterType="int">
+    SELECT destinationno, recipient, recipient_phone, postcode, address1 ,address2, memno
+    FROM destination
+    WHERE destinationno=#{destinationno}
+  </select>
+  
+  <!-- 배송지 수정 --> 
+  <update id="update" parameterType="DestinationVO">
+    UPDATE destination
+    SET recipient=#{recipient}, recipient_phone=#{recipient_phone},
+    postcode=#{postcode}, address1=#{address1}, address2=#{address2}
+    WHERE destinationno=#{destinationno}
+  </update>
+  
+  <!-- 기본 배송지로 설정 --> 
+  <update id="update_basic" parameterType="DestinationVO">
+    UPDATE destination
+    SET basic='A'
+    WHERE destinationno = #{destinationno} AND memno =#{memno}
+  </update>
+  
+  <!-- 기본 배송지 설정 시 나머지 배송지는 기본 배송지에서 해제시키기 --> 
+  <update id="update_basic_other" parameterType="DestinationVO">
+    UPDATE destination
+    SET basic='B'
+    WHERE destinationno != #{destinationno} AND memno =#{memno}
+  </update>
+  
+  <!-- 배송지 삭제 -->
+  <delete id="delete" parameterType="int">
+    DELETE FROM destination
+    WHERE destinationno=#{destinationno}
+  </delete>
+
+</mapper>

@@ -1,6 +1,7 @@
 /**********************************/
 /* Table Name: 관리자 */
 /**********************************/
+DROP TABLE MANAGER;
 CREATE TABLE MANAGER(
 		MANAGERNO                     		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
 		MANAGER_IMG                   		VARCHAR2(1000)		 NULL ,
@@ -38,3 +39,11 @@ COMMENT ON COLUMN MANAGER.MANAGER_ADDRESS1 is '관리자 주소1';
 COMMENT ON COLUMN MANAGER.MANAGER_ADDRESS2 is '관리자 주소2';
 COMMENT ON COLUMN MANAGER.JOINDATE is '입사일';
 COMMENT ON COLUMN MANAGER.MANAGERLVNO is '관리자 등급번호';
+
+DROP SEQUENCE MANAGER_seq;
+CREATE SEQUENCE MANAGER_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;

@@ -1,6 +1,7 @@
 /**********************************/
 /* Table Name: 회원 */
 /**********************************/
+DROP TABLE MEM;
 CREATE TABLE MEM(
 		MEMNO                         		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
 		MEM_IMG                       		VARCHAR2(1000)		 NULL ,
@@ -32,3 +33,11 @@ COMMENT ON COLUMN MEM.MEM_PHONE is '회원 전화번호';
 COMMENT ON COLUMN MEM.MEM_EMAIL is '회원 이메일';
 COMMENT ON COLUMN MEM.SIGNDATE is '가입일';
 COMMENT ON COLUMN MEM.MEMLVNO is '회원 등급번호';
+
+DROP SEQUENCE mem_seq;
+CREATE SEQUENCE mem_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;

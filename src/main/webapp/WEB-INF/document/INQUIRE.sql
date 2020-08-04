@@ -1,6 +1,7 @@
 /**********************************/
 /* Table Name: 1대1문의 */
 /**********************************/
+DROP TABLE INQUIRE;
 CREATE TABLE INQUIRE(
 		INQUIRENO                     		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
 		MEM_NO                        		NUMBER(10)		 NOT NULL,
@@ -27,3 +28,11 @@ COMMENT ON COLUMN INQUIRE.WORD is '검색어';
 COMMENT ON COLUMN INQUIRE.INQUIRE_RDATE is '등록일';
 COMMENT ON COLUMN INQUIRE.MEMNO is '회원번호';
 COMMENT ON COLUMN INQUIRE.INQUIRECATE is '문의 카테고리 번호';
+
+DROP SEQUENCE INQUIRE_seq;
+CREATE SEQUENCE INQUIRE_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;

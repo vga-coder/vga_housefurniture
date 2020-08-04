@@ -23,6 +23,11 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="vga.mvc.furniture" />
+	<context:component-scan base-package="vga.mvc.memlv" />
+	<context:component-scan base-package="vga.mvc.mem" />
+	<context:component-scan base-package="vga.mvc.destination" />
+	<context:component-scan base-package="vga.mvc.managerlv" />
+	<context:component-scan base-package="vga.mvc.manager" />
 	
 	
 	

@@ -1,6 +1,7 @@
 /**********************************/
 /* Table Name: 관리자 등급 */
 /**********************************/
+DROP TABLE MANAGERLV;
 CREATE TABLE MANAGERLV(
 		MANAGERLVNO                   		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
 		MANAGERLV_NAME                		VARCHAR2(20)		 NOT NULL,
@@ -14,10 +15,19 @@ COMMENT ON COLUMN MANAGERLV.MANAGERLV_NAME is '관리자 등급이름';
 COMMENT ON COLUMN MANAGERLV.MANAGERLV_PAY is '관리자 등급 별 연봉';
 COMMENT ON COLUMN MANAGERLV.MANAGERLV_DO is '관리자 등급업무';
 
+DROP SEQUENCE MANAGERLV_seq;
+CREATE SEQUENCE MANAGERLV_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;
+
 
 /**********************************/
 /* Table Name: 관리자 */
 /**********************************/
+DROP TABLE MANAGER;
 CREATE TABLE MANAGER(
 		MANAGERNO                     		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
 		MANAGER_IMG                   		VARCHAR2(1000)		 NULL ,
@@ -56,10 +66,19 @@ COMMENT ON COLUMN MANAGER.MANAGER_ADDRESS2 is '관리자 주소2';
 COMMENT ON COLUMN MANAGER.JOINDATE is '입사일';
 COMMENT ON COLUMN MANAGER.MANAGERLVNO is '관리자 등급번호';
 
+DROP SEQUENCE MANAGER_seq;
+CREATE SEQUENCE MANAGER_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;
+
 
 /**********************************/
 /* Table Name: 회원 등급 */
 /**********************************/
+DROP TABLE MEMLV;
 CREATE TABLE MEMLV(
 		MEMLVNO                       		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
 		MEMLV_NAME                    		VARCHAR2(20)		 NOT NULL,
@@ -75,10 +94,19 @@ COMMENT ON COLUMN MEMLV.MEMLV_IMG is '회원 등급로고';
 COMMENT ON COLUMN MEMLV.MEMLV_CONDITION is '회원 등급조건';
 COMMENT ON COLUMN MEMLV.MEMLV_BENEFIT is '회원 등급혜택';
 
+DROP SEQUENCE MEMLV_seq;
+CREATE SEQUENCE MEMLV_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;
+
 
 /**********************************/
 /* Table Name: 회원 */
 /**********************************/
+DROP TABLE MEM;
 CREATE TABLE MEM(
 		MEMNO                         		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
 		MEM_IMG                       		VARCHAR2(1000)		 NULL ,
@@ -111,10 +139,19 @@ COMMENT ON COLUMN MEM.MEM_EMAIL is '회원 이메일';
 COMMENT ON COLUMN MEM.SIGNDATE is '가입일';
 COMMENT ON COLUMN MEM.MEMLVNO is '회원 등급번호';
 
+DROP SEQUENCE mem_seq;
+CREATE SEQUENCE mem_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;
+
 
 /**********************************/
 /* Table Name: 배송지 */
 /**********************************/
+DROP TABLE DESTINATION;
 CREATE TABLE DESTINATION(
 		DESTINATIONNO                 		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
 		RECIPIENT                     		VARCHAR2(20)		 NOT NULL,
@@ -137,23 +174,43 @@ COMMENT ON COLUMN DESTINATION.ADDRESS2 is '주소';
 COMMENT ON COLUMN DESTINATION.BASIC is '기본배송지';
 COMMENT ON COLUMN DESTINATION.MEMNO is '회원번호';
 
+DROP SEQUENCE DESTINATION_seq;
+CREATE SEQUENCE DESTINATION_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;
+
 
 /**********************************/
 /* Table Name: 문의 카테고리 */
 /**********************************/
+DROP TABLE INQUIRECATE;
 CREATE TABLE INQUIRECATE(
 		INQUIRECATE                   		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
-		INQUIRE_NAME                  		VARCHAR2(50)		 NOT NULL
+		INQUIRE_NAME                  		VARCHAR2(50)		 NOT NULL,
+        INQUIRECNT                       	NUMBER(30)		 DEFAULT 0		 NOT NULL
 );
 
 COMMENT ON TABLE INQUIRECATE is '문의 카테고리';
 COMMENT ON COLUMN INQUIRECATE.INQUIRECATE is '문의 카테고리 번호';
 COMMENT ON COLUMN INQUIRECATE.INQUIRE_NAME is '이름';
+COMMENT ON COLUMN INQUIRECATE.INQUIRECNT is '등록된 문의 수';
+
+DROP SEQUENCE INQUIRECATE_seq;
+CREATE SEQUENCE INQUIRECATE_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;
 
 
 /**********************************/
 /* Table Name: 1대1문의 */
 /**********************************/
+DROP TABLE INQUIRE;
 CREATE TABLE INQUIRE(
 		INQUIRENO                     		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
 		MEM_NO                        		NUMBER(10)		 NOT NULL,
@@ -181,10 +238,19 @@ COMMENT ON COLUMN INQUIRE.INQUIRE_RDATE is '등록일';
 COMMENT ON COLUMN INQUIRE.MEMNO is '회원번호';
 COMMENT ON COLUMN INQUIRE.INQUIRECATE is '문의 카테고리 번호';
 
+DROP SEQUENCE INQUIRE_seq;
+CREATE SEQUENCE INQUIRE_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;
+
 
 /**********************************/
 /* Table Name: 1대1문의 첨부파일 */
 /**********************************/
+DROP TABLE INQUIRE_ATTACHFILE;
 CREATE TABLE INQUIRE_ATTACHFILE(
 		INQUIRE_ATTACHFILENO          		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
 		INQUIRENO                     		NUMBER(10)		 NULL ,
@@ -205,10 +271,19 @@ COMMENT ON COLUMN INQUIRE_ATTACHFILE.INQUIRE_THUMB is 'Thumb 파일';
 COMMENT ON COLUMN INQUIRE_ATTACHFILE.INQUIRE_FSIZE is '파일 사이즈';
 COMMENT ON COLUMN INQUIRE_ATTACHFILE.INQUIRE_RDATE is '등록일';
 
+DROP SEQUENCE INQUIRE_ATTACHFILE_seq;
+CREATE SEQUENCE INQUIRE_ATTACHFILE_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;
+  
 
 /**********************************/
 /* Table Name: 1대1문의 답변 */
 /**********************************/
+DROP TABLE INQUIRE_REPLY;
 CREATE TABLE INQUIRE_REPLY(
 		INQUIRE_REPLYNO               		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
 		INQUIRENO                     		NUMBER(10)		 NOT NULL,
@@ -230,6 +305,82 @@ COMMENT ON COLUMN INQUIRE_REPLY.REPLY_PASSWD is '패스워드';
 COMMENT ON COLUMN INQUIRE_REPLY.REPLY_RDATE is '등록일';
 COMMENT ON COLUMN INQUIRE_REPLY.MANAGERNO is '관리자 번호';
 
+DROP SEQUENCE INQUIRE_REPLY_seq;
+CREATE SEQUENCE INQUIRE_REPLY_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;
+
+
+/**********************************/
+/* Table Name: 공지사항 */
+/**********************************/
+DROP TABLE NOTE;
+CREATE TABLE NOTE(
+		NOTENO                        		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
+		NOTE_TITLE                    		VARCHAR2(50)		 NOT NULL,
+		NOTE_CONTENT                  		CLOB	 NOT NULL,
+		NOTE_SEQNO                    		NUMBER(10)		 NOT NULL,
+		NOTE_MANAGER                  		VARCHAR2(50)		 NOT NULL,
+		NOTE_PASS                     		VARCHAR2(20)		 NOT NULL,
+		NOTE_DATE                     		DATE		 NOT NULL,
+		MANAGERNO                     		NUMBER(10)		 NULL ,
+  FOREIGN KEY (MANAGERNO) REFERENCES MANAGER (MANAGERNO)
+);
+
+COMMENT ON TABLE NOTE is '공지사항';
+COMMENT ON COLUMN NOTE.NOTENO is '공지사항번호';
+COMMENT ON COLUMN NOTE.NOTE_TITLE is '공지사항 제목';
+COMMENT ON COLUMN NOTE.NOTE_CONTENT is '공지사항 내용';
+COMMENT ON COLUMN NOTE.NOTE_SEQNO is '공지사항 출력순서';
+COMMENT ON COLUMN NOTE.NOTE_MANAGER is '공지사항 작성자';
+COMMENT ON COLUMN NOTE.NOTE_PASS is '공지사항 패스워드';
+COMMENT ON COLUMN NOTE.NOTE_DATE is '등록일';
+COMMENT ON COLUMN NOTE.MANAGERNO is '관리자 번호';
+
+DROP SEQUENCE NOTE_seq;
+CREATE SEQUENCE NOTE_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;
+  
+  
+/**********************************/
+/* Table Name: 공지사항 첨부파일 */
+/**********************************/
+DROP TABLE NOTEPHOTO;
+CREATE TABLE NOTEPHOTO(
+		NOTEPHOTONO                   		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
+		FNAME                         		VARCHAR2(100)		 NULL ,
+		FUPNAME                       		VARCHAR2(100)		 NULL ,
+		THUMB                         		VARCHAR2(100)		 NULL ,
+		FSIZE                         		NUMBER(10)		 NOT NULL,
+		RDATE                         		DATE		 NOT NULL,
+		NOTENO                        		NUMBER(10)		 NULL ,
+  FOREIGN KEY (NOTENO) REFERENCES NOTE (NOTENO)
+);
+
+COMMENT ON TABLE NOTEPHOTO is '공지사항 첨부파일';
+COMMENT ON COLUMN NOTEPHOTO.NOTEPHOTONO is '상품사진 번호';
+COMMENT ON COLUMN NOTEPHOTO.FNAME is '원본 파일명';
+COMMENT ON COLUMN NOTEPHOTO.FUPNAME is '업로드 파일명';
+COMMENT ON COLUMN NOTEPHOTO.THUMB is 'Thumb 파일명';
+COMMENT ON COLUMN NOTEPHOTO.FSIZE is '파일 사이즈';
+COMMENT ON COLUMN NOTEPHOTO.RDATE is '등록일';
+COMMENT ON COLUMN NOTEPHOTO.NOTENO is '공지사항번호';
+
+DROP SEQUENCE NOTEPHOTO_seq;
+CREATE SEQUENCE NOTEPHOTO_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;
+  
 
 /**********************************/
 /* Table Name: 상품 카테고리 그룹 */
@@ -362,32 +513,6 @@ COMMENT ON COLUMN ITEMPHOTO.FUPNAME is '업로드 파일명';
 COMMENT ON COLUMN ITEMPHOTO.THUMB is 'Thumb 파일명';
 COMMENT ON COLUMN ITEMPHOTO.FSIZE is '파일 사이즈';
 COMMENT ON COLUMN ITEMPHOTO.RDATE is '등록일';
-
-
-/**********************************/
-/* Table Name: 공지사항 */
-/**********************************/
-CREATE TABLE NOTE(
-		NOTENO                        		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
-		NOTE_TITLE                    		VARCHAR2(50)		 NOT NULL,
-		NOTE_CONTENT                  		CLOB(4000)		 NOT NULL,
-		NOTE_SEQNO                    		NUMBER(10)		 NOT NULL,
-		NOTE_MANAGER                  		VARCHAR2(50)		 NOT NULL,
-		NOTE_PASS                     		VARCHAR2(20)		 NOT NULL,
-		NOTE_DATE                     		DATE		 NOT NULL,
-		MANAGERNO                     		NUMBER(10)		 NULL ,
-  FOREIGN KEY (MANAGERNO) REFERENCES MANAGER (MANAGERNO)
-);
-
-COMMENT ON TABLE NOTE is '공지사항';
-COMMENT ON COLUMN NOTE.NOTENO is '공지사항번호';
-COMMENT ON COLUMN NOTE.NOTE_TITLE is '공지사항 제목';
-COMMENT ON COLUMN NOTE.NOTE_CONTENT is '공지사항 내용';
-COMMENT ON COLUMN NOTE.NOTE_SEQNO is '공지사항 출력순서';
-COMMENT ON COLUMN NOTE.NOTE_MANAGER is '공지사항 작성자';
-COMMENT ON COLUMN NOTE.NOTE_PASS is '공지사항 패스워드';
-COMMENT ON COLUMN NOTE.NOTE_DATE is '등록일';
-COMMENT ON COLUMN NOTE.MANAGERNO is '관리자 번호';
 
 
 /**********************************/
@@ -564,30 +689,6 @@ COMMENT ON COLUMN DELIVERY.PORDER_DETAILNO is '주문상세번호';
 COMMENT ON COLUMN DELIVERY.DMAN is '담당자';
 COMMENT ON COLUMN DELIVERY.DELIVERY_DATE is '배송상태최종처리일';
 COMMENT ON COLUMN DELIVERY.STATUS is '배송상태';
-
-
-/**********************************/
-/* Table Name: 공지사항 첨부파일 */
-/**********************************/
-CREATE TABLE NOTEPHOTO(
-		NOTEPHOTONO                   		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
-		FNAME                         		VARCHAR2(100)		 NULL ,
-		FUPNAME                       		VARCHAR2(100)		 NULL ,
-		THUMB                         		VARCHAR2(100)		 NULL ,
-		FSIZE                         		NUMBER(10)		 NOT NULL,
-		RDATE                         		DATE		 NOT NULL,
-		NOTENO                        		NUMBER(10)		 NULL ,
-  FOREIGN KEY (NOTENO) REFERENCES NOTE (NOTENO)
-);
-
-COMMENT ON TABLE NOTEPHOTO is '공지사항 첨부파일';
-COMMENT ON COLUMN NOTEPHOTO.NOTEPHOTONO is '상품사진 번호';
-COMMENT ON COLUMN NOTEPHOTO.FNAME is '원본 파일명';
-COMMENT ON COLUMN NOTEPHOTO.FUPNAME is '업로드 파일명';
-COMMENT ON COLUMN NOTEPHOTO.THUMB is 'Thumb 파일명';
-COMMENT ON COLUMN NOTEPHOTO.FSIZE is '파일 사이즈';
-COMMENT ON COLUMN NOTEPHOTO.RDATE is '등록일';
-COMMENT ON COLUMN NOTEPHOTO.NOTENO is '공지사항번호';
 
 
 /**********************************/

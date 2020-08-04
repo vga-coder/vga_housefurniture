@@ -1,6 +1,7 @@
 /**********************************/
 /* Table Name: 배송지 */
 /**********************************/
+DROP TABLE DESTINATION;
 CREATE TABLE DESTINATION(
 		DESTINATIONNO                 		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
 		RECIPIENT                     		VARCHAR2(20)		 NOT NULL,
@@ -22,3 +23,11 @@ COMMENT ON COLUMN DESTINATION.ADDRESS1 is '주소1';
 COMMENT ON COLUMN DESTINATION.ADDRESS2 is '주소';
 COMMENT ON COLUMN DESTINATION.BASIC is '기본배송지';
 COMMENT ON COLUMN DESTINATION.MEMNO is '회원번호';
+
+DROP SEQUENCE DESTINATION_seq;
+CREATE SEQUENCE DESTINATION_seq
+  START WITH 1              -- 시작 번호
+  INCREMENT BY 1          -- 증가값
+  MAXVALUE 9999999999 -- 최대값: 9999999 --> NUMBER(7) 대응
+  CACHE 2                       -- 2번은 메모리에서만 계산
+  NOCYCLE;

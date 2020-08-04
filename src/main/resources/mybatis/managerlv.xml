@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="vga.mvc.managerlv.ManagerlvDAOInter">
+
+  <!-- 관리자 등급 등록 --> 
+  <insert id="create" parameterType="ManagerlvVO">
+    INSERT INTO managerlv(managerlvno, managerlv_name, managerlv_pay, managerlv_do)
+    VALUES(managerlv_seq.nextval, #{managerlv_name}, #{managerlv_pay}, #{managerlv_do})
+  </insert>
+  
+  <!-- 관리자 등급 전체 목록 조회 --> 
+  <select id="list" resultType="ManagerlvVO">
+    SELECT managerlvno, managerlv_name, managerlv_pay, managerlv_do
+    FROM managerlv
+    ORDER BY managerlvno ASC
+  </select>
+  
+  <!-- managerlvno(PK)로 관리자 등급 한 건만 조회 -->    
+  <select id="read" resultType="ManagerlvVO" parameterType="int">
+    SELECT managerlvno, managerlv_name, managerlv_pay, managerlv_do
+    FROM managerlv
+    WHERE managerlvno=#{managerlvno}
+  </select>
+  
+  <!-- 관리자 등급 수정 --> 
+  <update id="update" parameterType="ManagerlvVO">
+    UPDATE managerlv
+    SET managerlv_name=#{managerlv_name}, managerlv_pay=#{managerlv_pay}, managerlv_do=#{managerlv_do}
+    WHERE managerlvno = #{managerlvno}
+  </update>
+  
+  <!-- 관리자 등급 삭제 --> 
+  <delete id="delete" parameterType="int">
+    DELETE FROM managerlv
+    WHERE managerlvno=#{managerlvno}
+  </delete>
+  
+</mapper>
