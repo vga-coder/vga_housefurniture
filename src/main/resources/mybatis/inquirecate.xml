@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="vga.mvc.inquirecate.InquirecateDAOInter">
+  
+  <!-- 문의 카테고리 등록 --> 
+  <insert id="create" parameterType="InquirecateVO">
+    INSERT INTO inquirecate(inquirecateno, inquirecate_name, inquirecate_content, inquirecnt)
+    VALUES(inquirecate_seq.nextval, #{inquirecate_name}, #{inquirecate_content}, 0)
+  </insert>
+  
+  <!-- 문의 카테고리 전체 목록 조회 --> 
+  <select id="list" resultType="InquirecateVO" parameterType="int">
+    SELECT inquirecateno, inquirecate_name, inquirecate_content, inquirecnt
+    FROM inquirecate
+    ORDER BY inquirecateno ASC
+  </select>
+  
+  <!-- 문의 카테고리 한 건만 조회 -->   
+  <select id="read" resultType="InquirecateVO" parameterType="int">
+    SELECT inquirecateno, inquirecate_name, inquirecate_content, inquirecnt
+    FROM inquirecate
+    WHERE inquirecateno=#{inquirecateno}
+  </select>
+  
+  <!-- 문의 카테고리 수정 --> 
+  <update id="update" parameterType="InquirecateVO">
+    UPDATE inquirecate
+    SET inquirecate_name=#{inquirecate_name}, inquirecate_content=#{inquirecate_content}
+    WHERE inquirecateno=#{inquirecateno}
+  </update>
+  
+  <!-- 문의 카테고리 삭제 -->
+  <delete id="delete" parameterType="int">
+    DELETE FROM inquirecate
+    WHERE inquirecateno=#{inquirecateno}
+  </delete>
+
+</mapper>

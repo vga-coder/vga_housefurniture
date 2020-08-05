@@ -19,9 +19,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <!-- 회원 가입 --> 
   <insert id="create" parameterType="MemVO">
     INSERT INTO mem(memno, mem_img, mem_id, mem_pw, mem_name, mem_yy,
-    mem_mm, mem_dd, mem_telecom, mem_phone, mem_email, signdate)
+    mem_mm, mem_dd, mem_telecom, mem_phone, mem_email, memlvno, signdate)
     VALUES (mem_seq.nextval, null, #{mem_id}, #{mem_pw}, #{mem_name}, #{mem_yy},
-    #{mem_mm}, #{mem_dd}, #{mem_telecom}, #{mem_phone}, #{mem_email}, sysdate)
+    #{mem_mm}, #{mem_dd}, #{mem_telecom}, #{mem_phone}, #{mem_email}, 1, sysdate)
   </insert>
   
   <!-- 회원 목록 -->

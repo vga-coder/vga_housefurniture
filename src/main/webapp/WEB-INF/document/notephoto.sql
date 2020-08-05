@@ -1,6 +1,7 @@
 /**********************************/
 /* Table Name: 공지사항 첨부파일 */
 /**********************************/
+DROP TABLE NOTEPHOTO;
 CREATE TABLE NOTEPHOTO(
 		NOTEPHOTONO                   		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
 		FNAME                         		VARCHAR2(100)		 NULL ,
@@ -8,7 +9,7 @@ CREATE TABLE NOTEPHOTO(
 		THUMB                         		VARCHAR2(100)		 NULL ,
 		FSIZE                         		NUMBER(10)		 NOT NULL,
 		RDATE                         		DATE		 NOT NULL,
-		NOTENO                        		NUMBER(10)		 NULL ,
+		NOTENO                        		NUMBER(10)	 NOT NULL ,
   FOREIGN KEY (NOTENO) REFERENCES NOTE (NOTENO)
 );
 

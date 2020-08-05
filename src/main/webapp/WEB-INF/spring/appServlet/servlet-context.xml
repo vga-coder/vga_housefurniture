@@ -28,6 +28,11 @@
 	<context:component-scan base-package="vga.mvc.destination" />
 	<context:component-scan base-package="vga.mvc.managerlv" />
 	<context:component-scan base-package="vga.mvc.manager" />
+	<context:component-scan base-package="vga.mvc.inquirecate" />
+	<context:component-scan base-package="vga.mvc.inquire" />
+	<context:component-scan base-package="vga.mvc.inquire_reply" />
+	<context:component-scan base-package="vga.mvc.notecate" />
+	<context:component-scan base-package="vga.mvc.note" />
 	
 	
 	
