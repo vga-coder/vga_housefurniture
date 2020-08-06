@@ -38,7 +38,7 @@ public class Tool {
     boolean sw = false;
     if (file != null) {
       file = file.toLowerCase();
-      if (file.endsWith("jpg") || file.endsWith(".jpeg") || file.endsWith(".png") || file.endsWith("gif")) {
+      if (file.endsWith("jpg") || file.endsWith("jpeg") || file.endsWith(".png") || file.endsWith("gif")) {
         sw = true;
       }
     }
@@ -99,7 +99,7 @@ public class Tool {
  
     String name = src.getName().toLowerCase(); // 파일명을 추출하여 소문자로 변경
     // 이미지 파일인지 검사
-    if (name.endsWith("jpg") || name.endsWith("bmp") || name.endsWith("png")
+    if (name.endsWith("jpg") || name.endsWith("jpeg") || name.endsWith("png")
         || name.endsWith("gif")) {
       try {
         srcImg = ImageIO.read(src); // 메모리에 원본 이미지 생성

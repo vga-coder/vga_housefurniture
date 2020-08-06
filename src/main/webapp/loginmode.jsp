@@ -20,12 +20,31 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+<style>
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #ffb6c1;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #80c1e1;
+}
+</style>
 </head>
 
 <body>
   <jsp:include page="/menu/top.jsp" flush='false' />
 
-  <div class="form" style="margin:20px auto; width:80%; text-align:center">
+  <div class="form" style="margin:100px auto; width:80%; text-align:center">
 
 
   <DIV style="font-size:20px;" class='title_line'>
@@ -34,17 +53,17 @@
   <br>
   
   <FORM class="login-form" name='frm' id='frm' method='POST' action='./login.do' class="form-horizontal">
-  <input type='hidden' name='memno' id='memno' value='${param.memno }'>
+
   <div>
-  <button type="button" onclick="location.href='${root}/mem/mypage.do?memno=${memno }'">마이페이지</button>
-  <BR><BR>
-  <button type="button" onclick="location.href='${root}/mem/logout.do'">로그아웃</button>
-  <BR><BR>
-  <button type="button" onclick="location.href='${root}/mem/delete.do?memno=${memno }'">회원 탈퇴</button>
+      <button type="button" onclick="location.href='${root}/manager/login.do'">관리자 로그인</button>
+      <BR><BR>
+      <button type="button" onclick="location.href='${root}/mem/login.do'">회원 로그인</button>
+      <BR><BR>
+      <p class="message">Not registered? <a href="${root}/mem/create.do">회원가입</a></p>
   </div>
 
   </FORM>
-</div>
+</div>  
 <jsp:include page="/menu/bottom.jsp" flush='false' />
 </body>
 

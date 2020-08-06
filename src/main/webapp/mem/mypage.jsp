@@ -19,18 +19,34 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<style>
+  .form {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+}
+</style>
 </head>
 
-<body onload="showImage()">
+<body>
 <jsp:include page="/menu/top.jsp" flush='false' />
 
   <DIV class="form" style="margin:0px auto; width:80%; text-align:center">
   
   <FORM name='frm' id='frm' method='POST' action='./mypage.do' class="form-horizontal">
     <input type='hidden' name='memno' id='memno' value='${param.memno }'>
-			<div class="card card1"> <div style="margin:20px auto; font-size:20px;">vga_furniture 프로필</div>
-			<img src='./img/${memVO.mem_img }'/> <br>
+			<div class="card card1"> <div style="margin:18px auto; font-size:20px;">vga_furniture 프로필</div>
+			<c:choose>
+			<c:when test="${memVO.mem_img == null}">
+			<img src='./profile/profile.PNG' style="width:150px; height:100px;"/><br>
+			</c:when>
+			<c:when test="${memVO.mem_img != null}">
+			<img src='./img/${memVO.mem_img }'/><br>
+			</c:when>
+			</c:choose>
 			<b>이름</b> : ${memVO.mem_name } <br>
 			<b>생년월일</b> : ${memVO.mem_yy }/${memVO.mem_mm }/${memVO.mem_dd }<br>
 			<button type="button" onclick="location.href='${root}/mem/mem_img_update.do?memno=${memno }'">사진 수정</button></div>

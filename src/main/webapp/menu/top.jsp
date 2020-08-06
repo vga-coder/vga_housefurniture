@@ -5,7 +5,7 @@
 
 <header>
     <div class="wrapper">
-      <h1>vga_furniture</h1>
+      <h1><A href='${root}/index.jsp'>vga_furniture</A></h1>
       <nav>
         <h2>Main Navigation</h2>
         <ul>
@@ -14,7 +14,14 @@
           <li><a href="#">Reservations</a></li>
           <li><a href="#">News</a></li>
           <li><a href="#">Reviews</a></li>
-          <li><a href="#">login</a></li>
+          <c:choose>
+        <c:when test="${sessionScope.mem_id == null}">
+          <li><A href='${root}/loginmode.jsp'>login</A></li>
+        </c:when>
+        <c:when test="${sessionScope.mem_id != null}">
+        <li><A href='${root}/mem/mypage_logout_select.jsp?memno=${memno}'>my page</A></li>
+        </c:when>
+        </c:choose>
         </ul>
       </nav>
     </div>

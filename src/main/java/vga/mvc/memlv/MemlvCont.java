@@ -189,7 +189,7 @@ public class MemlvCont {
 
 	    memlv_img = Upload.saveFileSpring(mf, upDir); 
 
-	    memlv_img = Tool.preview(upDir, memlv_img, 150, 100); 
+	    memlv_img = Tool.preview(upDir, memlv_img, 100, 70); 
 
 	    // -------------------------------------------------------------------
 	    // 파일 전송 코드 종료

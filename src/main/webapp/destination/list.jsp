@@ -16,10 +16,23 @@
   <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="${root }/javascript/script.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
 
 </script>
+<style>
+.form {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+}
+</style>
 </head> 
 
 <body>
@@ -37,7 +50,7 @@
   <FORM name='frm' id='frm' method='POST' action='./list.do'>
   <input type='hidden' name='memno' id='memno' value='${param.memno }'>
 
- <TABLE style="margin:20px auto">
+ <TABLE class='table table-striped'>
   <colgroup>
     <col style='width: 15%;'/>
     <col style='width: 50%;'/>

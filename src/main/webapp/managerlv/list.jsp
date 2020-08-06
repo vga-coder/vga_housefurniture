@@ -21,12 +21,13 @@
 <script type="text/javascript">
 
 </script>
+
 </head> 
 
 <body>
   <jsp:include page="/menu/top.jsp" flush='false' />
 
-  <div class="form" style="margin:20px auto; width:80%; text-align:center">
+  <div style="margin:20px auto; width:80%; text-align:center">
   <DIV style="margin:0px auto; font-size:20px;">
     관리자 등급 목록
   </DIV>

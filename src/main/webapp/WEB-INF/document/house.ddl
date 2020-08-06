@@ -159,7 +159,7 @@ CREATE TABLE DESTINATION(
 		POSTCODE                      		NUMBER(10)		 NOT NULL,
 		ADDRESS1                      		VARCHAR2(80)		 NOT NULL,
 		ADDRESS2                      		VARCHAR2(80)		 NOT NULL,
-		BASIC                         		CHAR(1)		 NOT NULL,
+		BASIC                         		CHAR(1)	default 'B'	 NOT NULL,
 		MEMNO                         		NUMBER(10)		 NOT NULL,
   FOREIGN KEY (MEMNO) REFERENCES MEM (MEMNO)
 );

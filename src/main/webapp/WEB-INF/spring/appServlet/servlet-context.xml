@@ -23,6 +23,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="vga.mvc.furniture" />
+	<context:component-scan base-package="vga.mvc.tool" />
 	<context:component-scan base-package="vga.mvc.memlv" />
 	<context:component-scan base-package="vga.mvc.mem" />
 	<context:component-scan base-package="vga.mvc.destination" />
@@ -34,6 +35,10 @@
 	<context:component-scan base-package="vga.mvc.notecate" />
 	<context:component-scan base-package="vga.mvc.note" />
 	
+	<!-- FORM의 FILE 태그를 읽어 MultipartFile 객체로 변환 -->
+  	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+  	</beans:bean>
 	
 	
 </beans:beans>
