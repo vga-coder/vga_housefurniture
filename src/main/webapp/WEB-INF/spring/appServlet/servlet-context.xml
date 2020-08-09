@@ -32,8 +32,12 @@
 	<context:component-scan base-package="vga.mvc.inquirecate" />
 	<context:component-scan base-package="vga.mvc.inquire" />
 	<context:component-scan base-package="vga.mvc.inquire_reply" />
+	<context:component-scan base-package="vga.mvc.inquire_attachfile" />
 	<context:component-scan base-package="vga.mvc.notecate" />
 	<context:component-scan base-package="vga.mvc.note" />
+	<context:component-scan base-package="vga.mvc.notephoto" />
+	<context:component-scan base-package="vga.mvc.itemgrp" />
+	<context:component-scan base-package="vga.mvc.itemcate" />
 	
 	<!-- FORM의 FILE 태그를 읽어 MultipartFile 객체로 변환 -->
   	<beans:bean id="multipartResolver"

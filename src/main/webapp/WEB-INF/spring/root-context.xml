@@ -26,8 +26,12 @@
                            vga.mvc.inquirecate,
                            vga.mvc.inquire,
                            vga.mvc.inquire_reply,
+                           vga.mvc.inquire_attachfile,
                            vga.mvc.notecate,
-                           vga.mvc.note
+                           vga.mvc.note,
+                           vga.mvc.notephoto,
+                           vga.mvc.itemgrp,
+                           vga.mvc.itemcate
                             " />
 		<property name="mapperLocations" value="classpath:mybatis/*.xml" />
 	</bean>
