@@ -52,19 +52,18 @@
 
   <div class="form" style="margin:20px auto; width:80%; text-align:center">
   <DIV style="margin:0px auto; font-size:20px;">
-    회원 등급 목록
+    문의 목록
   </DIV>
   <FORM name='frm' id='frm' method='POST' action='./list.do'>
 
-  <c:forEach var="inquirecateVO" items="${list }">  <!-- request 객체에 접근 -->
-    <c:set var="inquirecateno" value="${inquirecateVO.inquirecateno}" />
+  <c:forEach var="inquireVO" items="${list }">  <!-- request 객체에 접근 -->
+    <c:set var="inquireno" value="${inquireVO.inquireno}" />
     <div class="card card1">
-    <div style="margin:20px auto; font-size:20px;">${inquirecateVO.inquirecate_name }</div>
-	<b>내용</b> : ${inquirecateVO.inquirecate_content } <br>
-	<button type="button" onclick="location.href='${root}/memlv/memlv_img_update.do?memlvno=${memlvno }'">로고 변경</button>
-	<button type="button" onclick="location.href='${root}/memlv/update.do?memlvno=${memlvno}'">수정</button>
-	<button type="button" onclick="location.href='${root}/memlv/delete.do?memlvno=${memlvno}'">삭제</button><br><br>
-    <button type="button" onclick="location.href='${root}/memlv/read.do?memlvno=${memlvno }'">상세보기 및 회원관리</button></div>
+    <div style="margin:20px auto; font-size:20px;">${inquireVO.inquire_name }</div>
+	<b>내용</b> : ${inquireVO.inquire_content } <br>
+	<button type="button" onclick="location.href='${root}/inquire/update.do?inquireno=${inquireno}'">수정</button>
+	<button type="button" onclick="location.href='${root}/inquire/delete.do?inquireno=${inquireno}'">삭제</button><br><br>
+    <button type="button" onclick="location.href='${root}/inquire/read.do?inquireno=${inquireno }'">상세보기 및 회원관리</button></div>
   </c:forEach>
 
   </FORM>
