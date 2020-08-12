@@ -51,21 +51,21 @@
   <div style="margin:20px auto; width:80%; text-align:center">
 
   <DIV style="margin:20px auto; font-size:20px;" class='title_line'>
-    문의 카테고리 추가
+    상품 그룹 추가
   </DIV>
   
 <FORM name='frm' method='POST' action='./create.do' class="form-horizontal">
   <div class="form-group">
-     <label class="control-label col-md-3">문의 카테고리 이름</label>
+     <label class="control-label col-md-3">상품 그룹 이름</label>
      <div class="col-md-9">
-       <input type='text' name='inquirecate_name' value='' required="required" 
+       <input type='text' name='name' value='' required="required" 
                   autofocus="autofocus" class="form-control" style='width: 50%;'>
      </div>
   </div>
   <div class="form-group">
-     <label class="control-label col-md-3">문의 카테고리 내용</label>
+     <label class="control-label col-md-3">상품 그룹 출력 모드</label>
      <div class="col-md-9">
-       <input type='text' name='inquirecate_content' value='' required="required" 
+       <input type='text' name='visible' value='' required="required" 
                   autofocus="autofocus" class="form-control" style='width: 50%;'>
      </div>
   </div>  

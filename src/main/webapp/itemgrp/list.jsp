@@ -52,17 +52,18 @@
 
   <div class="form" style="margin:20px auto; width:80%; text-align:center">
   <DIV style="margin:0px auto; font-size:20px;">
-    문의 카테고리 목록
+    상품 그룹 목록
   </DIV>
   <FORM name='frm' id='frm' method='POST' action='./list.do'>
 
-  <c:forEach var="inquirecateVO" items="${list }">  <!-- request 객체에 접근 -->
-    <c:set var="inquirecateno" value="${inquirecateVO.inquirecateno}" />
+  <c:forEach var="itemgrpVO" items="${list }">  <!-- request 객체에 접근 -->
+    <c:set var="grpno" value="${itemgrpVO.grpno}" />
     <div class="card card1">
-    <div style="margin:20px auto; font-size:20px;">${inquirecateVO.inquirecate_name }</div>
-	<b>내용</b> : ${inquirecateVO.inquirecate_content } <br>
-	<button type="button" onclick="location.href='${root}/inquirecate/update.do?inquirecateno=${inquirecateno}'">수정</button>
-	<button type="button" onclick="location.href='${root}/inquirecate/delete.do?inquirecateno=${inquirecateno}'">삭제</button><br><br>
+    <div style="margin:20px auto; font-size:20px;">${itemgrpVO.name }</div>
+	<b>내용</b> : ${itemgrpVO.seqno } <br>
+	<button type="button" onclick="location.href='${root}/memlv/memlv_img_update.do?memlvno=${memlvno }'">로고 변경</button>
+	<button type="button" onclick="location.href='${root}/memlv/update.do?memlvno=${memlvno}'">수정</button>
+	<button type="button" onclick="location.href='${root}/memlv/delete.do?memlvno=${memlvno}'">삭제</button><br><br>
     <button type="button" onclick="location.href='${root}/inquirecate/read.do?inquirecateno=${inquirecateno }'">상세보기 및 회원관리</button></div>
   </c:forEach>
 

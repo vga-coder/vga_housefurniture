@@ -52,18 +52,18 @@
 
   <div class="form" style="margin:20px auto; width:80%; text-align:center">
   <DIV style="margin:0px auto; font-size:20px;">
-    문의 카테고리 목록
+    공지사항 카테고리 목록
   </DIV>
   <FORM name='frm' id='frm' method='POST' action='./list.do'>
 
-  <c:forEach var="inquirecateVO" items="${list }">  <!-- request 객체에 접근 -->
-    <c:set var="inquirecateno" value="${inquirecateVO.inquirecateno}" />
+  <c:forEach var="notecateVO" items="${list }">  <!-- request 객체에 접근 -->
+    <c:set var="notecateno" value="${notecateVO.notecateno}" />
     <div class="card card1">
-    <div style="margin:20px auto; font-size:20px;">${inquirecateVO.inquirecate_name }</div>
-	<b>내용</b> : ${inquirecateVO.inquirecate_content } <br>
-	<button type="button" onclick="location.href='${root}/inquirecate/update.do?inquirecateno=${inquirecateno}'">수정</button>
-	<button type="button" onclick="location.href='${root}/inquirecate/delete.do?inquirecateno=${inquirecateno}'">삭제</button><br><br>
-    <button type="button" onclick="location.href='${root}/inquirecate/read.do?inquirecateno=${inquirecateno }'">상세보기 및 회원관리</button></div>
+    <div style="margin:20px auto; font-size:20px;">${notecateVO.notecate_name }</div>
+	<b>내용</b> : ${notecateVO.notecate_content } <br>
+	<button type="button" onclick="location.href='${root}/notecate/update.do?notecateno=${notecateno}'">수정</button>
+	<button type="button" onclick="location.href='${root}/notecate/delete.do?notecateno=${notecateno}'">삭제</button><br><br>
+    <button type="button" onclick="location.href='${root}/notecate/read.do?notecateno=${notecateno }'">상세보기 및 회원관리</button></div>
   </c:forEach>
 
   </FORM>

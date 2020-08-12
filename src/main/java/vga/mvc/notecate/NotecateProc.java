@@ -24,8 +24,8 @@ public class NotecateProc implements NotecateProcInter {
 
 	@Override
 	public NotecateVO read(int notecateno) {
-		NotecateVO inquirecateVO = this.notecateDAO.read(notecateno);
-		return inquirecateVO;
+		NotecateVO notecateVO = this.notecateDAO.read(notecateno);
+		return notecateVO;
 	}
 
 	@Override

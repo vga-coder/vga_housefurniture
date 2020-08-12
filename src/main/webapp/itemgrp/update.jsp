@@ -16,9 +16,6 @@
   <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="${root }/javascript/script.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   <style>
     /* 테이블의 테두리 영역을 확인하기 위해 사용하는 소스입니다. */
@@ -51,10 +48,11 @@
   <div style="margin:20px auto; width:80%; text-align:center">
 
   <DIV style="margin:20px auto; font-size:20px;" class='title_line'>
-    문의 카테고리 추가
+    문의 카테고리 수정
   </DIV>
   
-<FORM name='frm' method='POST' action='./create.do' class="form-horizontal">
+<FORM name='frm' method='POST' action='./update.do' class="form-horizontal">
+<input type='hidden' name='inquirecateno' id='inquirecateno' value='${inquirecateVO.inquirecateno }'>
   <div class="form-group">
      <label class="control-label col-md-3">문의 카테고리 이름</label>
      <div class="col-md-9">
@@ -68,8 +66,8 @@
        <input type='text' name='inquirecate_content' value='' required="required" 
                   autofocus="autofocus" class="form-control" style='width: 50%;'>
      </div>
-  </div>  
-
+  </div>     
+<br>
   <div class="content_bottom_menu" style="padding-right: 20%;">
     <button type="submit" class="btn">등록</button>
     <button type="button" onclick="location.href='./list.do'" class="btn">목록</button>

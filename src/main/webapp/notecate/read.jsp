@@ -16,9 +16,6 @@
   <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="${root }/javascript/script.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   <style>
     /* 테이블의 테두리 영역을 확인하기 위해 사용하는 소스입니다. */
@@ -51,27 +48,25 @@
   <div style="margin:20px auto; width:80%; text-align:center">
 
   <DIV style="margin:20px auto; font-size:20px;" class='title_line'>
-    문의 카테고리 추가
+    ${notecateVO.notecate_name } 공지사항 
   </DIV>
   
-<FORM name='frm' method='POST' action='./create.do' class="form-horizontal">
+<FORM name='frm' method='POST' action='./read.do' class="form-horizontal">
+<input type='hidden' name='notecateno' id='notecateno' value='${notecateVO.notecateno }'>
   <div class="form-group">
-     <label class="control-label col-md-3">문의 카테고리 이름</label>
+     <label class="control-label col-md-3">공지사항 기본상세</label>
      <div class="col-md-9">
-       <input type='text' name='inquirecate_name' value='' required="required" 
-                  autofocus="autofocus" class="form-control" style='width: 50%;'>
+       ${notecateVO.notecate_content }"
      </div>
   </div>
   <div class="form-group">
-     <label class="control-label col-md-3">문의 카테고리 내용</label>
+     <label class="control-label col-md-3">등록된 공지사항 글 수</label>
      <div class="col-md-9">
-       <input type='text' name='inquirecate_content' value='' required="required" 
-                  autofocus="autofocus" class="form-control" style='width: 50%;'>
+       ${notecateVO.notecnt }
      </div>
-  </div>  
-
-  <div class="content_bottom_menu" style="padding-right: 20%;">
-    <button type="submit" class="btn">등록</button>
+  </div>   
+<br>
+  <div class="content_bottom_menu" style="margin:auto;">
     <button type="button" onclick="location.href='./list.do'" class="btn">목록</button>
   </div>
 
